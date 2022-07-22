@@ -1,9 +1,10 @@
 import { makeAutoObservable } from "mobx";
+import { MASTER_ROLE } from "../utils/consts";
 
 export default class UserStore {
   constructor() {
-    this._isAuth = false;
-    this._user = {};
+    this._isAuth = true;
+    this._user = {name:"Гриша Кислый",female:'Август',email:"assa@gmail.com",id:1,role:MASTER_ROLE};
     makeAutoObservable(this);
   }
 
