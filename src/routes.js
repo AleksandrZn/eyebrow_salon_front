@@ -1,9 +1,9 @@
-import Admin from "./pages/Admin";
-import Appointment from "./pages/Appointment";
-import Auth from "./pages/Auth";
-import Main from "./pages/Main";
-import Profile from "./pages/Profile";
-import Courses from "./pages/Сourses";
+import Admin from "./pages/Admin/index.jsx";
+import Appointment from "./pages/Appointment/index.jsx";
+import Auth from "./pages/Auth/index.jsx";
+import Main from "./pages/Main/index.jsx";
+import Profile from "./pages/Profile/index.jsx";
+import Courses from "./pages/Courses/index.jsx";
 import {
   ADMIN_ROUTE,
   APPOINTMENT_ROUTE,
