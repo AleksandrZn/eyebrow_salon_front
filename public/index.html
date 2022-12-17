@@ -40,4 +40,31 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+  <script src="https://yookassa.ru/checkout-widget/v1/checkout-widget.js"></script>
+
+
+<div id="payment-form"></div>
+
+<script>
+//Инициализация виджета. Все параметры обязательные, кроме объекта customization.
+const checkout = new window.YooMoneyCheckoutWidget({
+    confirmation_token: 'confirmation-token', //Токен, который перед проведением оплаты нужно получить от ЮKassa
+    return_url: 'https://merchant.site', //Ссылка на страницу завершения оплаты
+
+    //Настройка виджета (при необходимости)
+    customization: {
+        //Настройка цветовой схемы, минимум один параметр, значения цветов в HEX
+        colors: {
+            //Цвет акцентных элементов: кнопка Заплатить, выбранные переключатели, опции и текстовые поля
+            control_primary: '#00BF96' //Значение цвета в HEX
+        }
+    },
+    error_callback: function(error) {
+        console.log("Error!!!!!!!!!!!!")
+    }
+});
+
+//Отображение платежной формы в контейнере
+checkout.render('payment-form');
+</script>
 </html>

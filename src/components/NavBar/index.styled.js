@@ -79,12 +79,3 @@ export const NavButtWrapper = styled.div`
   }
   font-family: ${baseTheme.fonts.main500};
 `;
-
-export const AuthButtWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex: 0 0 12.8%;
-  height: 100%;
-  font-family: ${baseTheme.fonts.main900};
-`;

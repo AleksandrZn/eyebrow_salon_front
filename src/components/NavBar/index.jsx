@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
   APPOINTMENT_ROUTE,
-  AUTH_ROUTE,
   COURSES_ROUTE,
   MAIN_ROUTE,
 } from "../../utils/consts";
@@ -22,7 +21,6 @@ export const NavBar = () => {
     setActive({
       courses: window.location.pathname === COURSES_ROUTE ? true : false,
       appoint: window.location.pathname === APPOINTMENT_ROUTE ? true : false,
-      auth: window.location.pathname === AUTH_ROUTE ? true : false,
       main: window.location.pathname === MAIN_ROUTE ? true : false,
     });
   }, [window.location.pathname]);
@@ -41,11 +39,6 @@ export const NavBar = () => {
           Запись
         </Button>
       </NavButtWrapper>
-      <AuthButtWrapper>
-        <Button onClick={() => navigate(AUTH_ROUTE)} active={active.auth}>
-          Войти
-        </Button>
-      </AuthButtWrapper>
     </Header>
   );
 };

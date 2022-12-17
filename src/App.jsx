@@ -10,7 +10,7 @@ import { Container } from "./index.styled";
 import { Footer } from "./components/Footer";
 import { Scroll } from "./components/SmoothScroll";
 import { ADMIN_ROUTE } from "./utils/consts";
-import Admin from "./pages/Admin";
+import Basket from "./components/Basket";
 
 const App = observer(() => {
   const { user } = useContext(Context);
@@ -38,7 +38,6 @@ const App = observer(() => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={ADMIN_ROUTE} element={<Admin />} />
         <Route
           path="*"
           element={

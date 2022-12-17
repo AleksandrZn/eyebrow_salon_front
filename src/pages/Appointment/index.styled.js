@@ -1,4 +1,3 @@
-import { Button } from "antd";
 import styled, { css } from "styled-components";
 
 export const ContentWrapper = styled.div`
