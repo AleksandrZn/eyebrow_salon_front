@@ -14,11 +14,11 @@ import {
 } from "./utils/consts";
 
 export const authRoutes = [
-  { path: ADMIN_ROUTE, Component: Admin },
   { path: PROFILE_ROUTE, Component: Profile },
   { path: APPOINTMENT_ROUTE, Component: Appointment },
 ];
 export const publicRoutes = [
+
   { path: AUTH_ROUTE, Component: Auth },
   { path: MAIN_ROUTE, Component: Main },
   { path: COURSES_ROUTE, Component: Courses },
