@@ -1,10 +1,17 @@
 import { makeAutoObservable } from "mobx";
-import { MASTER_ROLE } from "../utils/consts";
+import { DESCTOP, MASTER_ROLE, MOBILE } from "../utils/consts";
+import { detectDevice } from "../utils/detectDevice";
 
 export default class UserStore {
   constructor() {
     this._isAuth = true;
-    this._user = {name:"Гриша Кислый",female:'Август',email:"assa@gmail.com",id:1,role:MASTER_ROLE};
+    this._user = {
+      name: "Гриша Кислый",
+      female: "Август",
+      email: "assa@gmail.com",
+      id: 1,
+      role: MASTER_ROLE,
+    };
     makeAutoObservable(this);
   }
 

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../../../../index";
 import {
   Image,
   AddBasketBtn,
@@ -13,23 +14,29 @@ import {
   WrapperBtn,
 } from "./index.stylde";
 
-const Course = () => {
+const Course = ({ image, header, description, price, handleAdd }) => {
+  const { basket } = useContext(Context);
   return (
     <CourseWrapper>
-      <Image>Картинка</Image>
+      <Image src={image} />
       <TextWrapper>
-        <Header>Заголовок</Header>
+        <Header>{header}</Header>
         <DescriptionWrapper>
           <DescriptionBtn>Скрыть/Раскрыть</DescriptionBtn>
-          <Description>
-            Описание видеоурока бла бла бла бла бла бла бла бла бла бла бла
-          </Description>
+          <Description>{description}</Description>
         </DescriptionWrapper>
       </TextWrapper>
-      <Price>4500</Price>
+      <Price>{price}</Price>
       <WrapperBtn>
-        <AddBasketBtn>Добавить в корзину</AddBasketBtn>
-        <BuyBtn>Купить</BuyBtn>
+        <AddBasketBtn onClick={handleAdd}>Добавить в корзину</AddBasketBtn>
+        <BuyBtn
+          onClick={() => {
+            handleAdd();
+            basket.setIsVisible(true);
+          }}
+        >
+          Купить
+        </BuyBtn>
       </WrapperBtn>
     </CourseWrapper>
   );

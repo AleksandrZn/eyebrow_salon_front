@@ -12,10 +12,11 @@ import {
   TextWrapper,
   Container,
 } from "./index.styled";
+import AnimatedPage from "../../components/AnimatedPage";
 
 const Appointment = () => {
   return (
-    <>
+    <AnimatedPage>
       <Header>Услуги</Header>
       <ContentWrapper height={287}>
         <Image src="img/Photo4.jpg" />
@@ -40,7 +41,7 @@ const Appointment = () => {
           <MasterTime />
         </Content>
       </ContentWrapper>
-    </>
+    </AnimatedPage>
   );
 };
 

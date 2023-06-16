@@ -1,9 +1,6 @@
-import Scrollbar from 'smooth-scrollbar';
-import { useEffect } from 'react';
-import OverscrollPlugin from 'smooth-scrollbar/plugins/overscroll';
-
-
-
+import Scrollbar from "smooth-scrollbar";
+import { useEffect } from "react";
+import OverscrollPlugin from "smooth-scrollbar/plugins/overscroll";
 
 //   const overscrollOptions = {
 //     enable: true,
@@ -13,39 +10,38 @@ import OverscrollPlugin from 'smooth-scrollbar/plugins/overscroll';
 //     glowColor: '#fff',
 //   };
 
-  const overscrollOptions = {
-    enable: true,
-    effect: 'glow',
-    damping: 0.1,
-    maxOverscroll: 500,
-    glowColor: '#222a2d',
-  };
+const overscrollOptions = {
+  enable: true,
+  effect: "glow",
+  damping: 0.2,
+  maxOverscroll: 40,
+  glowColor: "#222a2d",
+};
 
-  
 const options = {
-    damping : 0.07,
-    plugins: {
-      overscroll: { ...overscrollOptions },
-    },
-    
-  }
-  
- export const Scroll = () => {
-
-    useEffect(() => {
-
-        Scrollbar.use(OverscrollPlugin);
-
-        Scrollbar.init(document.body, options);
-        
-    
-      
-    
-        return () => {
-          if (Scrollbar) Scrollbar.destroy(document.body)
-        }  },[])
-  
+  damping: 0.07,
+  plugins: {
+    overscroll: { ...overscrollOptions },
+  },
+};
 
 
-    return null;
-}
+export const Scroll = () => {
+  useEffect(() => {
+    const header = document.getElementById("header");
+    Scrollbar.use(OverscrollPlugin);
+
+    const scrollbar = Scrollbar.init(document.body, options);
+
+    scrollbar.addListener(function (status) {
+      const offset = status.offset;
+
+      header.style.transform = `translate3d(-50%, ${offset.y}px, 0px)`;
+    });
+    return () => {
+      if (Scrollbar) Scrollbar.destroy(document.body);
+    };
+  }, [global.isOpenBurger]);
+
+  return null;
+};

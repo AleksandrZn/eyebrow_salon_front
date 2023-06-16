@@ -6,7 +6,10 @@ export const CourseWrapper = styled.div`
   border: 1px solid black;
   margin: 10px;
 `;
-export const Image = styled.div``;
+export const Image = styled.img`
+  width: 100px;
+  height: 100px;
+`;
 
 export const TextWrapper = styled.div``;
 export const Header = styled.div``;

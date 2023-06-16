@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const ModalWrapper = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   position: absolute;
   z-index: 10;
   background-color: rgba(1, 1, 1, 0.1);
@@ -20,7 +20,7 @@ export const BasketWrapper = styled.div`
   height: 600px;
   display: block;
   border: 1px solid black;
-  background-color: rgba(2, 3, 1, 0.6);
+  background-color: white;
 `;
 export const CountProductsWrapper = styled.div`
   display: flex;
@@ -35,14 +35,16 @@ export const ClearBtn = styled.div`
 
 export const ItemsWrapper = styled.div`
   display: flex;
+  flex-direction: column;
 `;
 export const Item = styled.div`
   display: flex;
   flex-direction: row;
   height: 100px;
 `;
-export const ItemImage = styled.div`
+export const ItemImage = styled.img`
   height: 95%;
+  width: 50px;
 `;
 export const ItemDescription = styled.div`
   height: 95%;
@@ -67,3 +69,13 @@ export const BuyBtn = styled.div`
 export const CloseBtn = styled.div`
   color: red;
 `;
+export const BuyFormWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  height: 600px;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+`;
+export const BackBtn = styled.div``;

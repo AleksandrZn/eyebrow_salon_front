@@ -4,19 +4,19 @@ import { createGlobalStyle } from "styled-components";
 
 export const baseTheme = {
   colors: {
-    background: "#fbf8f5",
+    background: "rgba(179, 179, 179, 0.2)",
     footer: "#CBC8C5",
     font: "#151515",
     font_pale: "rgba(21, 21, 21, 0.65)",
   },
 
   fonts: {
-    main300: "font-family: 'Inter', sans-serif; font-weight:300",
-    main400: "font-family: 'Inter', sans-serif; font-weight:400",
-    main500: "font-family: 'Inter', sans-serif; font-weight:500",
-    main600: "font-family: 'Inter', sans-serif; font-weight:600",
-    main900: "font-family: 'Inter', sans-serif; font-weight:900",
-    header400: "font-family: 'Oranienbaum', serif",
+    main300: "'Inter', sans-serif; font-weight:300",
+    main400: "'Inter', sans-serif; font-weight:400",
+    main500: "'Inter', sans-serif; font-weight:500",
+    main600: "'Inter', sans-serif; font-weight:600",
+    main900: "'Inter', sans-serif; font-weight:900",
+    header400: "'Oranienbaum', serif",
   },
 
   media: {
@@ -27,7 +27,7 @@ export const baseTheme = {
   },
 
   sizes: {
-    header: { height: 95 },
+    header: { height: 85 },
     container: { width: 1640 },
     footer: { height: 175 },
     modal: { width: 540 },
@@ -47,6 +47,7 @@ export default createGlobalStyle`
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
   }
+  
   body {
     margin: 0;
     background-color: ${baseTheme.colors.background};
@@ -176,23 +177,22 @@ export default createGlobalStyle`
     display: none;
   }
   & ::-webkit-scrollbar {
-    width: 10px;
+   display:none ;
   }
 
   & ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
     background-color: ${baseTheme.colors.background};
+    display:none ;
   }
 
   & ::-webkit-scrollbar-thumb {
     background:  ${baseTheme.colors.footer};
+    display:none ;
   }
 
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;900&family=Oranienbaum&display=swap');
   `;
 export const Container = styled.div`
-  max-width: ${baseTheme.sizes.container.width}px;
   margin: 0px auto;
-  padding: 0px 20px;
-  box-sizing: content-box;
 `;
