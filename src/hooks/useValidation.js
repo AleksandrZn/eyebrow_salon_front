@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { isValidPhoneNumber } from "react-phone-number-input";
 export const useValidation = (value, validations) => {
   const [isEmpty, setEmpty] = useState(true);
@@ -34,7 +33,6 @@ export const useValidation = (value, validations) => {
           break;
         case "isPhone":
           if (value !== undefined) setPhoneError(!isValidPhoneNumber(value));
-          console.log("Phone", phoneError);
           break;
         case "isEmpty":
           if (value !== undefined) value ? setEmpty(false) : setEmpty(true);

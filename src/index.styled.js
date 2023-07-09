@@ -4,7 +4,7 @@ import { createGlobalStyle } from "styled-components";
 
 export const baseTheme = {
   colors: {
-    background: "rgba(179, 179, 179, 0.2)",
+    background: "#F9F9F9",
     footer: "#CBC8C5",
     font: "#151515",
     font_pale: "rgba(21, 21, 21, 0.65)",
@@ -47,8 +47,9 @@ export default createGlobalStyle`
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
   }
-  
+  html,
   body {
+    height:100% ;
     margin: 0;
     background-color: ${baseTheme.colors.background};
   }
@@ -191,8 +192,11 @@ export default createGlobalStyle`
     display:none ;
   }
 
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;900&family=Oranienbaum&display=swap');
   `;
 export const Container = styled.div`
   margin: 0px auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;

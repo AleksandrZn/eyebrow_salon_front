@@ -1,5 +1,3 @@
 import styled from "styled-components";
 
-export const CoursesWrapper = styled.div`
-
-`;
+export const CoursesWrapper = styled.div``;

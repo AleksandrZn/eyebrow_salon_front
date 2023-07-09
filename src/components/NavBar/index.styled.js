@@ -1,69 +1,12 @@
 import styled from "styled-components";
 import { baseTheme } from "../../index.styled";
 
-import { css, keyframes } from "styled-components";
+import { Btn } from "../../components/Buttons/NavBtn/index.styled";
 
-const fade = keyframes`
-  0% {
-    transform: scale(1,1) ;
-  }
-
-  50% {
-    transform: scale(1.1,1.1) ;
-  }
-  100% {
-    opacity: scale(1,1);
-  }
-`;
-
-export const Btn = styled.div`
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  & {
-    height: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 10px;
-    cursor: pointer;
-  }
-  background: linear-gradient(currentColor 0 0) bottom / var(--d, 0) 2px
-    no-repeat;
-  transition: 0.2s;
-  text-transform: uppercase;
-  font-size: clamp(var(--min), var(--val), var(--max));
-  --min: 1em;
-  --val: 2.5vw;
-  --max: 1.125em;
-
-  ${({ type }) =>
-    type === "MOBILE"
-      ? css`
-          &:active {
-            --d: 100%;
-          }
-        `
-      : css`
-          &:hover {
-            --d: 100%;
-          }
-        `};
-
-  ${({ active }) =>
-    active
-      ? css`
-          --d: 100%;
-        `
-      : ``};
-
-  @media (max-width: 620px) {
-    display: none;
-  }
-`;
 
 export const Header = styled.div`
   position: fixed;
+  position: relative;
   left: 50%;
   top: 0;
   transform: translateX(-50%);
@@ -72,7 +15,7 @@ export const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: solid rgba(0, 0, 0, 0.15) 1px;
+  border-bottom: solid #D4D4D4 2px;
   box-sizing: content-box;
   height: calc(70px + (85 - 70) * ((100vw - 280px) / (1920 - 280)));
   position: relative;
@@ -80,7 +23,7 @@ export const Header = styled.div`
     content: "";
     width: calc(280px + (1920 - 280) * ((100vw - 280px) / (1920 - 280)));
     height: calc(70px + (85 - 70) * ((100vw - 280px) / (1920 - 280)));
-    background: #f0f0f0;
+    background: #F9F9F9;
     position: absolute;
     top: 0;
     left: 50%;

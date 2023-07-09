@@ -5,9 +5,19 @@ export const BlockWrapper = styled.div`
   scroll-snap-align: start;
   display: flex;
   box-sizing: content-box;
+  margin: 0px auto;
+  width: calc(280px + (1640 - 280) * ((100vw - 280px) / (1920 - 280)));
+  padding-top: calc(70px + (125 - 70) * ((100vw - 280px) / (1920 - 280)));
+  overflow: hidden;
   justify-content: space-between;
+  height: ${({ id }) =>
+    id === "Section-2"
+      ? `calc(557px + (726 - 557) * ((100vw - 280px) / (1920 - 280)))`
+      : `auto`};
   @media (max-width: 620px) {
     flex-direction: column-reverse;
+    width: 100%;
+    margin: 0;
   }
 `;
 
@@ -16,26 +26,30 @@ export const MainBlockWrapper = styled(BlockWrapper)`
   background-clip: content-box;
   width: auto;
   margin: 0px auto;
-  height: calc(280px + (791 - 280) * ((100vw - 280px) / (1920 - 280))) px;
   position: relative;
   color: white;
+  padding-top: 0;
   @media (max-width: 620px) {
     flex-direction: column;
     background: none;
-    width: calc(280px + (1640 - 280) * ((100vw - 280px) / (1920 - 280)));
-    justify-content: none;
-    margin: 0px auto;
+    width: 100%;
     height: auto;
     color: #151515;
   }
 `;
 
 export const MainInfoContainer = styled.div`
-  width: 48%;
+  max-width: 38%;
+  margin-right: calc(31px + (141 - 31) * ((100vw - 390px) / (1920 - 390)));
   margin-top: auto;
   margin-bottom: auto;
   @media (max-width: 620px) {
-    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+  @media (min-width: 620px) and (max-width: 800px) {
+    max-width: 50%;
+    margin-left: 30px;
   }
 `;
 export const Slider = styled.div`
@@ -62,19 +76,12 @@ export const Slider = styled.div`
   }
 `;
 
-export const Image1 = styled.img`
-  width: 48%;
-  object-fit: cover;
-  @media (max-width: 620px) {
-    width: 100%;
-  }
-`;
-
-export const ImageWrapper = styled.div``;
-
-export const Image3 = styled.img`
-  width: 50%;
-  object-fit: cover;
+export const WrapperSlider = styled.div`
+  width: calc(280px + (1640 - 280) * ((100vw - 280px) / (1920 - 280)));
+  height: calc(572px + (648 - 572) * ((100vw - 280px) / (1920 - 280)));
+  background: #151515;
+  position: relative;
+  margin: 0px auto;
   @media (max-width: 620px) {
     width: 100%;
   }
@@ -83,15 +90,29 @@ export const Image3 = styled.img`
 export const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 70%;
-  margin-left: 7%;
   justify-content: center;
-  ${({ left }) => (left ? "  margin-left: 5%;  margin-right: 5%;" : "")};
+  ${({ left }) =>
+    left
+      ? " "
+      : "margin-right:calc(62px + (106 - 62) * ((100vw - 390px) / (1920 - 390)));"};
 
   @media (max-width: 620px) {
     width: 90%;
     margin-left: 5%;
     margin-right: 5%;
+  }
+`;
+
+export const ContainerInfo = styled.div`
+  max-width: 43%;
+  margin-left: 5%;
+  margin-right: 5%;
+  @media (min-width: 620px) and (max-width: 800px) {
+    max-width: 50%;
+  }
+  @media (max-width: 620px) {
+    max-width: 100%;
+    margin: 0;
   }
 `;
 export const Header = styled.p`
@@ -106,71 +127,4 @@ export const Text = styled.p`
   font-family: ${baseTheme.fonts.main400};
   margin-bottom: calc(37px + (60 - 37) * ((100vw - 390px) / (1920 - 390)));
   font-size: calc(16px + (20 - 16) * ((100vw - 390px) / (1920 - 390)));
-`;
-export const Button = styled.div`
-  cursor: pointer;
-  font-family: ${baseTheme.fonts.main900};
-  padding: 17px 30px;
-  height: 51px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-self: flex-start;
-  background: linear-gradient(currentColor 0 0) 0 100%,
-    linear-gradient(currentColor 0 0) 0 100%,
-    linear-gradient(currentColor 0 0) 100% 100%,
-    linear-gradient(currentColor 0 0) 100% 100%;
-  background-size: var(--p, 55%) 2px, 2px var(--d, 0);
-  background-repeat: no-repeat;
-  transition: 0.2s;
-  font-size: calc(16px + (24 - 16) * ((100vw - 390px) / (1920 - 390)));
-  &:hover {
-    --d: 100%;
-    --p: 0%;
-  }
-`;
-export const NextButtonWhite = styled.div`
-  & svg {
-    width: calc(62px + (106 - 62) * ((100vw - 390px) / (1920 - 390)));
-  }
-  ${({ invert }) => (invert ? "filter: invert(75%); margin: 0 " : "")};
-  display: flex;
-  justify-content: flex-end;
-  margin-right: calc(31px + (141 - 31) * ((100vw - 390px) / (1920 - 390)));
-  path {
-    fill: white;
-    stroke: white;
-    &:nth-child(1) {
-      transform-origin: center;
-      transition: 0.2s;
-    }
-    &:nth-child(2) {
-      fill: none;
-      transform-origin: center;
-      transition: 0.2s;
-    }
-  }
-  svg:hover {
-    path:nth-child(1) {
-      transform: scale(1.1, 1.1);
-    }
-    path:nth-child(2) {
-      transform: scale(0.8, 0.8);
-    }
-  }
-  @media (max-width: 620px) {
-    path {
-      fill: #151515;
-      stroke: #151515;
-    }
-  }
-`;
-export const NextButtonBlack = styled(NextButtonWhite)`
-  @media (max-width: 620px) {
-    order: -1;
-  }
-  path {
-    fill: #151515;
-    stroke: #151515;
-  }
 `;

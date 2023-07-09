@@ -25,9 +25,9 @@ export const LinkWrapper = styled.div`
   font-family: ${baseTheme.fonts.main400};
   font-size: 15px;
   color: ${baseTheme.colors.font_pale};
-
+  cursor: pointer;
   & :hover {
-    color: #151515;
+    color: #151015;
   }
   @media (max-width: 830px) {
     margin-top: calc(20px + (25 - 20) * ((100vw - 280px) / (1920 - 280)));

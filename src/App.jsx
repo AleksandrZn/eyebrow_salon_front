@@ -1,65 +1,51 @@
-import React, { Suspense, lazy, useContext, useEffect, useState } from "react";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import "antd/dist/antd.css";
 import { observer } from "mobx-react-lite";
-import { Context } from "./index";
-import { NavBar } from "./components/NavBar";
-import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
-import { Container } from "./index.styled";
+import React, { useEffect, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Footer } from "./components/Footer";
+import { NavBar } from "./components/NavBar";
 import { Scroll } from "./components/SmoothScroll";
-//import Basket from "./components/Basket";
-import DelayedFallback from "./components/DelayFallback";
+import { Container } from "./index.styled";
+import { AnimatePresence } from "framer-motion/dist/framer-motion";
 import AppRouter from "./components/AppRouter";
-import Scrollbar from "smooth-scrollbar";
-import useScrollBlock from "./hooks/useScrollBlock";
+import Admin from "./pages/Admin";
+import { Context } from ".";
+import axios from "axios";
+import { useContext } from "react";
 
 const App = observer(() => {
-  // const { basket } = useContext(Context);
-  const [loading, setLoading] = useState(false);
   const { global } = useContext(Context);
-  const [blockScroll, allowScroll] = useScrollBlock();
-
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-    return () => clearTimeout(timeout);
-  }, [loading]);
+    return async function () {
+      const response = await axios.get("http://localhost:5000/api/data");
+      global.setData(response.data.response);
+    };
+  }, []);
 
-  if (loading) {
-    return <DelayedFallback />;
-  }
-
-  const handleScroll = () => {
-    if (global.isOpenBurger) {
-    } else {
-    }
-  };
-  useEffect(() => {
-    if (global.isOpenBurger) {
-      blockScroll();
-    } else {
-      allowScroll();
-    }
-  }, [global.isOpenBurger]);
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          onScrole={() => true}
-          path="*"
-          element={
-            <Container>
-              <NavBar />
-              {/* {basket.isVisible && <Basket />} */}
-              <Scroll />
-              <AppRouter />
-              <Footer />
-            </Container>
-          }
-        />
-      </Routes>
-    </BrowserRouter>
+    <AnimatePresence exitBeforeEnter>
+      <BrowserRouter>
+        <Routes>
+          {/* <Route
+            onScrole={() => true}
+            path="/17291fe4fd503a002e7ab3aa250b5968c31bfbdb"
+            element={<Admin />}
+          /> */}
+          <Route
+            onScrole={() => true}
+            path="*"
+            element={
+              <Container>
+                <NavBar />
+                <Scroll />
+                <AppRouter />
+                <Footer />
+              </Container>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    </AnimatePresence>
   );
 });
 

@@ -1,69 +1,57 @@
-import React, { useState, useRef, useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
-import Hamburger from "../Hamburger";
-import { StyledMenu, StyledLink } from "./index.styled";
-
-import { useOnClickOutside } from "../../hooks/useOnClickOutside";
-import { Btn } from "../NavBar/index.styled";
-import { APPOINTMENT_ROUTE, COURSES_ROUTE } from "../../utils/consts";
-import { Context } from "../..";
 import { observer } from "mobx-react-lite";
-import { AnimatePresence, motion } from "framer-motion/dist/framer-motion";
-export const Menu = observer(({ active, type, handleClick }) => {
-  const node = useRef(null);
+import Scrollbar from "smooth-scrollbar";
+import { Context } from "../..";
+import {
+  APPOINTMENT_ROUTE,
+  COURSES_ROUTE,
+  MAIN_ROUTE,
+} from "../../utils/consts";
+import NavBtn from "../Buttons/NavBtn";
+import Hamburger from "../Hamburger";
+import { StyledLink, StyledMenu, Wrapper } from "./index.styled";
+
+export const Menu = observer(() => {
   const { global } = useContext(Context);
   const close = () => {
     global.setIsOpenBurger(false);
   };
 
-  useOnClickOutside(node, () => {
-    global.setIsOpenBurger(false);
-  });
-
-  const animations = {
-    initial: { opacity: 0, x: 0 },
-    animate: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: 0 },
-  };
+  useEffect(() => {
+    if (global.isOpenBurger) {
+      Scrollbar.get(document.body).updatePluginOptions("modal", { open: true });
+    }
+    if (!global.isOpenBurger && Scrollbar.has(document.body)) {
+      Scrollbar.get(document.body).updatePluginOptions("modal", {
+        open: false,
+      });
+    }
+  }, [global.isOpenBurger]);
 
   return (
-    <div ref={node}>
-      <AnimatePresence exitBeforeEnter>
-        {global.isOpenBurger && (
-          <motion.div
-            variants={animations}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            transition={{ duration: 1 }}
-          >
-            <StyledMenu open={global.isOpenBurger}>
-              <StyledLink open={global.isOpenBurger} onClick={() => close()}>
-                <Btn
-                  style={{ display: "flex" }}
-                  onClick={() => handleClick(COURSES_ROUTE)}
-                  active={active.courses}
-                  type={type}
-                >
-                  Курсы
-                </Btn>
-              </StyledLink>
-              <StyledLink open={global.isOpenBurger} onClick={() => close()}>
-                <Btn
-                  style={{ display: "flex" }}
-                  onClick={() => handleClick(APPOINTMENT_ROUTE)}
-                  active={active.appoint}
-                  type={type}
-                >
-                  Запись
-                </Btn>
-              </StyledLink>
-            </StyledMenu>
-          </motion.div>
-        )}
-      </AnimatePresence>
+    <Wrapper>
+      <StyledMenu open={global.isOpenBurger}>
+        <StyledLink open={global.isOpenBurger} onClick={() => close()}>
+          <NavBtn
+            style={{ display: "flex" }}
+            name="Главная"
+            path={MAIN_ROUTE}
+          />
+          <NavBtn
+            style={{ display: "flex" }}
+            name="Курсы"
+            path={COURSES_ROUTE}
+          />
+          <NavBtn
+            style={{ display: "flex" }}
+            name="Запись"
+            path={APPOINTMENT_ROUTE}
+          />
+        </StyledLink>
+      </StyledMenu>
 
       <Hamburger />
-    </div>
+    </Wrapper>
   );
 });
