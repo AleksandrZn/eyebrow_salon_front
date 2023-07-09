@@ -12,7 +12,16 @@ import {
 import { Img } from "../../../../components/Img";
 import { ModalSwiper } from "../../../../components/ModalSwiper";
 
-const Course = ({ text, image, header, description, price, index }) => {
+const Course = ({
+  text,
+  image,
+  header,
+  srcs,
+  telegram,
+  whatsapp,
+  price,
+  index,
+}) => {
   const [touch, setTouch] = useState([false, false, false]);
   const [hover, setHover] = useState([false, false, false]);
   const [modalOpen, setModalOpen] = useState(false);
@@ -27,7 +36,6 @@ const Course = ({ text, image, header, description, price, index }) => {
     let copy = Object.assign([], hover);
     copy[index] = bool;
     setHover(copy);
-    console.log(hover);
   };
 
   return (
@@ -70,11 +78,7 @@ const Course = ({ text, image, header, description, price, index }) => {
           </svg>
         </DescriptionBtn>
         <WrapperBtns>
-          <a
-            href="https://ozark-serial.net/1-season/1-sezon-3-seriya/"
-            rel="noopener noreferrer"
-            target="_blanck"
-          >
+          <a href={telegram} rel="noopener noreferrer" target="_blanck">
             <BtnSocial
               touch={touch[1]}
               hover={hover[1]}
@@ -113,11 +117,7 @@ const Course = ({ text, image, header, description, price, index }) => {
               />
             </BtnSocial>
           </a>
-          <a
-            href="https://ozark-serial.net/1-season/1-sezon-3-seriya/"
-            rel="noopener noreferrer"
-            target="_blanck"
-          >
+          <a href={whatsapp} rel="noopener noreferrer" target="_blanck">
             <BtnSocial
               touch={touch[2]}
               hover={hover[2]}
@@ -159,7 +159,11 @@ const Course = ({ text, image, header, description, price, index }) => {
         </WrapperBtns>
         <Price>{price}</Price>
       </InfoWrapper>
-      <ModalSwiper modalOpen={modalOpen} setModalOpen={setModalOpen} />
+      <ModalSwiper
+        modalOpen={modalOpen}
+        setModalOpen={setModalOpen}
+        srcs={srcs}
+      />
     </CourseWrapper>
   );
 };

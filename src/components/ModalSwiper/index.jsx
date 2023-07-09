@@ -4,13 +4,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Zoom, Navigation, Pagination } from "swiper";
 import { CloseBtn, ModalWrapper } from "./index.styled";
 import Scrollbar from "smooth-scrollbar";
-export const ModalSwiper = ({ modalOpen, setModalOpen }) => {
+export const ModalSwiper = ({ modalOpen, setModalOpen, srcs }) => {
   const [offset, setOffset] = useState(0);
   useEffect(() => {
     if (modalOpen) {
       Scrollbar.get(document.body).updatePluginOptions("modal", { open: true });
       setOffset(Scrollbar.get(document.body).offset);
-      console.log(Scrollbar.get(document.body).offset);
     }
     if (!modalOpen && Scrollbar.has(document.body)) {
       Scrollbar.get(document.body).updatePluginOptions("modal", {
@@ -52,11 +51,13 @@ export const ModalSwiper = ({ modalOpen, setModalOpen }) => {
         className="mySwiper"
         spaceBetween={0}
       >
-        <SwiperSlide>
-          <div className="swiper-zoom-container">
-            <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-          </div>
-        </SwiperSlide>
+        {srcs.map((elem) => (
+          <SwiperSlide key={elem}>
+            <div className="swiper-zoom-container">
+              <img alt="" src={elem} />
+            </div>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </ModalWrapper>
   );

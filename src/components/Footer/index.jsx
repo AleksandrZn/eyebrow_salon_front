@@ -1,11 +1,12 @@
 import React from "react";
 import { FooterContainer, Text } from "./index.styled";
+import { footer } from "../../utils/data";
 
 export const Footer = () => {
   return (
     <FooterContainer>
-      <Text>©2022 alexandrova brows.</Text>
-      <Text>sann12346464@gmai.com</Text>
+      <Text>{footer.text}</Text>
+      <Text>{footer.email}</Text>
     </FooterContainer>
   );
 };

@@ -11,6 +11,7 @@ import { Img } from "../Img";
 import { Menu } from "../Menu";
 import { Header, NavButtWrapper } from "./index.styled";
 import Scrollbar from "smooth-scrollbar";
+import { header } from "../../utils/data";
 
 export const NavBar = observer(() => {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ export const NavBar = observer(() => {
           widthMedia={
             "calc(173px + (203 - 173) * ((100vw - 280px) / (1920 - 280)))"
           }
-          src="http://localhost:5000/logo.svg"
+          src={header.src}
           onClick={() => {
             navigate(MAIN_ROUTE);
             Scrollbar.get(document.body).setPosition(0, 0);

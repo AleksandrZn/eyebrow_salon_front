@@ -15,10 +15,12 @@ const Courses = observer(() => {
             key={index}
             image={item.image}
             header={item.header}
-            description={item.description}
-            price={item.price}
+            subHeader={item.subHeader}
+            telegram={item.telegram}
+            whatsapp={item.whatsapp}
             text={item.text}
             index={index === 0}
+            srcs={item.srcs}
           />
         ))}
         {appointmen === [] && <Message />}

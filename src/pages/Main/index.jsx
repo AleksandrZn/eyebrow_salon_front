@@ -19,27 +19,16 @@ import {
   Text,
   WrapperSlider,
 } from "./index.styled";
+import { main } from "../../utils/data";
 
 const Main = () => {
-  const imgs = [
-    "https://swiperjs.com/demos/images/nature-1.jpg",
-    "https://swiperjs.com/demos/images/nature-2.jpg",
-    "https://swiperjs.com/demos/images/nature-3.jpg",
-    "https://swiperjs.com/demos/images/nature-4.jpg",
-    "https://swiperjs.com/demos/images/nature-5.jpg",
-    "https://swiperjs.com/demos/images/nature-6.jpg",
-    "https://swiperjs.com/demos/images/nature-7.jpg",
-    "https://swiperjs.com/demos/images/nature-8.jpg",
-    "https://swiperjs.com/demos/images/nature-9.jpg",
-    "https://swiperjs.com/demos/images/nature-10.jpg",
-  ];
   return (
     <AnimatedPage>
       <MainBlockWrapper>
         <Img
           width={"48%"}
           widthMedia={"100%"}
-          src={"http://localhost:5000/main1.png"}
+          src={main[0].image}
           heightMedia={
             "calc(280px + (620 - 280) * ((100vw - 280px) / (620 - 280)))"
           }
@@ -195,14 +184,14 @@ const Main = () => {
           heightMedia={
             "calc(280px + (620 - 280) * ((100vw - 280px) / (620 - 280)))"
           }
-          src="http://localhost:5000/main2.svg"
+          src={main[1].image}
         />
       </BlockWrapper>
       <BlockWrapper id="Section-2">
         <div
           style={{
             position: "relative",
-            background: "url(http://localhost:5000/main_background.jpg) no-repeat center/cover",
+            background: `url(${main[2].background}) no-repeat center/cover`,
             boxShadow: "inset 0 0 0 100vw rgba(0,0,0,.75)",
             width: "100%",
             height: "100%",
@@ -216,7 +205,7 @@ const Main = () => {
                 "calc(40px + (57 - 40) * ((100vw - 280px) / (1920 - 280))) calc(2px + (140 - 2) * ((100vw - 280px) / (1920 - 280))) ",
 
               border: "5px solid #FFFFFF",
-              borderImage: "url('http://localhost:5000/main_border.png') round",
+              borderImage: `url(${main[2].border}) round`,
               borderImageSlice: "5",
               position: "absolute",
               height: "auto",
@@ -233,7 +222,7 @@ const Main = () => {
             <div>
               <img
                 alt=""
-                src="http://localhost:5000/logo.svg"
+                src={main[2].logo}
                 style={{
                   filter: " brightness(0) invert(1)",
                   width:
@@ -260,7 +249,7 @@ const Main = () => {
             >
               <img
                 alt=""
-                src="img/dotes.svg"
+                src={main[2].dotes}
                 style={{
                   position: "absolute",
                   transform: "rotate(180deg)",
@@ -270,7 +259,7 @@ const Main = () => {
               />
               <img
                 alt=""
-                src="img/dotes.svg"
+                src={main[2].dotes}
                 style={{
                   position: "absolute",
                   bottom: "-30px",
@@ -309,7 +298,7 @@ const Main = () => {
           width: "auto",
         }}
       >
-        Галерея работ
+        {main[3].header}
       </Header>
       <Text
         style={{
@@ -320,8 +309,7 @@ const Main = () => {
           marginLeft: "auto",
         }}
       >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sed eget
-        turpis vitae tempor.
+        {main[3].text}
       </Text>
       <WrapperSlider>
         <Slider
@@ -355,7 +343,7 @@ const Main = () => {
             speed={1300}
             className="mySwiper"
           >
-            {imgs.map((elem) => (
+            {main[3].srcs.map((elem) => (
               <SwiperSlide key={elem}>
                 <img alt="" src={elem} />
               </SwiperSlide>

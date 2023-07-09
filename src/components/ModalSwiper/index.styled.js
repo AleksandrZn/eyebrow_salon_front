@@ -27,6 +27,7 @@ export const ModalWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0 auto;
   }
   .swiper-zoom-container {
     min-height: 100vh;

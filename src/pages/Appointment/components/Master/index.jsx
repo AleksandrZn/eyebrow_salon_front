@@ -12,13 +12,21 @@ import {
 } from "./index.styled";
 import { Img } from "../../../../components/Img";
 import { ModalSwiper } from "../../../../components/ModalSwiper";
-import { Autoplay, Pagination, Navigation } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
 
-const Master = ({ text, image, header, index }) => {
+const Master = ({
+  text,
+  image,
+  header,
+  index,
+  subHeader,
+  telegram,
+  whatsapp,
+  srcs,
+}) => {
   const [touch, setTouch] = useState([false, false, false]);
   const [hover, setHover] = useState([false, false, false]);
   const [modalOpen, setModalOpen] = useState(false);
+  const [type, setType] = useState(false);
 
   const handleSetTouch = (index, bool) => {
     setTouch(([...touch][index] = bool));
@@ -30,7 +38,6 @@ const Master = ({ text, image, header, index }) => {
     let copy = Object.assign([], hover);
     copy[index] = bool;
     setHover(copy);
-    console.log(hover);
   };
 
   return (
@@ -47,19 +54,17 @@ const Master = ({ text, image, header, index }) => {
               width="calc(66px + (200 - 66) * ((100vw - 280px) / (1920 - 280)))"
               widthMedia="calc(66px + (200 - 66) * ((100vw - 280px) / (1920 - 280)))"
               heightMedia="calc(66px + (200 - 66) * ((100vw - 280px) / (1920 - 280)))"
-              onClick={() => setModalOpen(true)}
+              onClick={() => {
+                setModalOpen(true);
+                setType(true);
+              }}
             />
             <TextWrapper>
-              <Header>Юлия Такая-то</Header>
-              <Text>Виталик-пулеметчик</Text>
+              <Header>{header}</Header>
+              <Text>{subHeader}</Text>
             </TextWrapper>
           </HeaderWrapper>
-          <Text style={{ margin: "10px 0" }}>
-            Figma ipsum component variant main layer. Device share subtract
-            background team pencil hand select main. Figma ipsum component
-            variant main layer. Device share subtract background team pencil
-            hand select main.
-          </Text>
+          <Text style={{ margin: "10px 0" }}>{text}</Text>
           <DescriptionBtn touch={touch[0]} hover={hover[0]}>
             <svg
               onTouchEnd={() => handleSetTouch(0, false)}
@@ -69,7 +74,8 @@ const Master = ({ text, image, header, index }) => {
               onClick={() => {
                 handleSetTouch(0, false);
                 handleSetHover(0, false);
-                return setModalOpen(true);
+                setModalOpen(true);
+                setType(false);
               }}
               width="119"
               height="22"
@@ -88,10 +94,7 @@ const Master = ({ text, image, header, index }) => {
             </svg>
           </DescriptionBtn>
           <WrapperBtns>
-            <a
-              href="https://ozark-serial.net/1-season/1-sezon-3-seriya/"
-              rel="noopener noreferrer"
-            >
+            <a href={telegram} rel="noopener noreferrer">
               <BtnSocial
                 touch={touch[1]}
                 hover={hover[1]}
@@ -130,10 +133,7 @@ const Master = ({ text, image, header, index }) => {
                 />
               </BtnSocial>
             </a>
-            <a
-              href="https://ozark-serial.net/1-season/1-sezon-3-seriya/"
-              rel="noopener noreferrer"
-            >
+            <a href={whatsapp} rel="noopener noreferrer">
               <BtnSocial
                 touch={touch[2]}
                 hover={hover[2]}
@@ -173,7 +173,11 @@ const Master = ({ text, image, header, index }) => {
               </BtnSocial>
             </a>
           </WrapperBtns>
-          <ModalSwiper modalOpen={modalOpen} setModalOpen={setModalOpen} />
+          <ModalSwiper
+            modalOpen={modalOpen}
+            setModalOpen={setModalOpen}
+            srcs={type ? [image] : srcs}
+          />
         </InfoWrapper>
       </MasterWrapper>
     </>

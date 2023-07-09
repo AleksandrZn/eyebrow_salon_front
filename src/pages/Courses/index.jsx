@@ -1,7 +1,6 @@
 import { observer } from "mobx-react-lite";
-import React, { useContext } from "react";
+import React from "react";
 import AnimatedPage from "../../components/AnimatedPage";
-import { Context } from "../../index";
 import { courses } from "../../utils/data";
 import Course from "./components/course";
 import { CoursesWrapper } from "./index.styled";
@@ -20,6 +19,9 @@ const Courses = observer(() => {
             price={item.price}
             text={item.text}
             index={index === 0}
+            srcs={item.srcs}
+            telegram={item.telegram}
+            whatsapp={item.whatsapp}
           />
         ))}
         {courses === [] && <Message />}
